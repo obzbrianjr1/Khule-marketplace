@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khule Marketplace | Uganda Online Marketplace</title>
+  <meta name="description" content="Khule Marketplace - Uganda's online marketplace for buying and selling products.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-content {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #f59e0b;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 14px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #111827, #374151);
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      margin-bottom: 25px;
+    }
+
+    .search {
+      max-width: 650px;
+      margin: auto;
+      display: flex;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .search input {
+      flex: 1;
+      border: none;
+      padding: 15px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .search button {
+      border: none;
+      background: #f59e0b;
+      padding: 0 22px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .category {
+      background: white;
+      padding: 18px 10px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      cursor: pointer;
+    }
+
+    .category:hover {
+      transform: translateY(-2px);
+    }
+
+    .category-icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    }
+
+    .product-image {
+      height: 170px;
+      background: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-info h3 {
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #059669;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .buy-btn {
+      width: 100%;
+      border: none;
+      background: #111827;
+      color: white;
+      padding: 11px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .sell {
+      margin-top: 45px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,.07);
+    }
+
+    .sell button {
+      margin-top: 15px;
+      background: #f59e0b;
+      border: none;
+      padding: 13px 25px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 600px) {
+      .header-content {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 0 6px;
+      }
+
+      .hero h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="logo">KHULE <span>MARKETPLACE</span></div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Products</a>
+      <a href="#sell">Sell</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <h1>Welcome to Khule Marketplace</h1>
+  <p>Uganda's online marketplace — Buy. Sell. Connect.</p>
+
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Search products...">
+    <button onclick="searchProducts()">Search</button>
+  </div>
+</section>
+
+<div class="container">
+
+  <h2 class="section-title" id="categories">Shop by Category</h2>
+
+  <div class="categories">
+    <div class="category">
+      <div class="category-icon">👕</div>
+      Fashion
+    </div>
+
+    <div class="category">
+      <div class="category-icon">📱</div>
+      Electronics
+    </div>
+
+    <div class="category">
+      <div class="category-icon">🚗</div>
+      Vehicles
+    </div>
+
+    <div class="category">
+      <div class="category-icon">🏠</div>
+      Property
+    </div>
+
+    <div class="category">
+      <div class="category-icon">🛋️</div>
+      Furniture
+    </div>
+
+    <div class="category">
+      <div class="category-icon">💼</div>
+      Jobs & Services
+    </div>
+  </div>
+
+  <h2 class="section-title" id="products">Featured Products</h2>
+
+  <div class="products">
+
+    <div class="product">
+      <div class="product-image">👕</div>
+      <div class="product-info">
+        <h3>Men's Shirt</h3>
+        <div class="price">UGX 35,000</div>
+        <button class="buy-btn" onclick="buyProduct('Men’s Shirt')">View Product</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">📱</div>
+      <div class="product-info">
+        <h3>Smartphone</h3>
+        <div class="price">UGX 450,000</div>
+        <button class="buy-btn" onclick="buyProduct('Smartphone')">View Product</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">👟</div>
+      <div class="product-info">
+        <h3>Sports Shoes</h3>
+        <div class="price">UGX 80,000</div>
+        <button class="buy-btn" onclick="buyProduct('Sports Shoes')">View Product</button>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="product-image">🪑</div>
+      <div class="product-info">
+        <h3>Modern Chair</h3>
+        <div class="price">UGX 120,000</div>
+        <button class="buy-btn" onclick="buyProduct('Modern Chair')">View Product</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sell" id="sell">
+    <h2>Want to sell on Khule Marketplace?</h2>
+    <p>List your products and reach customers across Uganda.</p>
+    <button onclick="startSelling()">Start Selling</button>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>KHULE MARKETPLACE</strong></p>
+  <p>Uganda Online Marketplace</p>
+  <p>© 2026 Khule Marketplace. All rights reserved.</p>
+</footer>
+
+<script>
+  function searchProducts() {
+    const search = document.getElementById("searchInput").value.trim();
+
+    if (search === "") {
+      alert("Please enter a product to search.");
+      return;
+    }
+
+    alert("Searching Khule Marketplace for: " + search);
+  }
+
+  function buyProduct(product) {
+    alert(product + " selected. Product details and checkout will be connected in the next version.");
+  }
+
+  function startSelling() {
+    alert("Seller registration will be connected in the next version.");
+  }
+</script>
+
+</body>
+</html>
