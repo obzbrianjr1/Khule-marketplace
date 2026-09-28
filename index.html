@@ -3,219 +3,487 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Khule Marketplace | Uganda Online Marketplace</title>
-  <meta name="description" content="Khule Marketplace - Uganda's online marketplace for buying and selling products.">
+
+  <meta
+    name="description"
+    content="Khule Marketplace - Buy, sell and connect across Uganda."
+  >
 
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       background: #f5f7fa;
-      color: #222;
+      color: #172033;
     }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* HEADER */
 
     header {
       background: #111827;
       color: white;
-      padding: 18px 20px;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,.18);
     }
 
     .header-content {
-      max-width: 1100px;
+      max-width: 1150px;
       margin: auto;
+      padding: 16px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 15px;
+      gap: 20px;
     }
 
     .logo {
-      font-size: 23px;
-      font-weight: bold;
+      font-size: 22px;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
     .logo span {
       color: #f59e0b;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 15px;
       font-size: 14px;
     }
 
+    nav a:hover {
+      color: #f59e0b;
+    }
+
+    .cart-button {
+      background: #f59e0b;
+      color: #111827;
+      border: none;
+      padding: 9px 13px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    /* HERO */
+
     .hero {
-      background: linear-gradient(135deg, #111827, #374151);
+      background:
+        linear-gradient(135deg, rgba(17,24,39,.96), rgba(55,65,81,.95));
       color: white;
       text-align: center;
-      padding: 55px 20px;
+      padding: 65px 20px;
     }
 
     .hero h1 {
-      font-size: 38px;
-      margin-bottom: 12px;
+      font-size: 42px;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span {
+      color: #f59e0b;
     }
 
     .hero p {
-      font-size: 17px;
-      margin-bottom: 25px;
+      font-size: 18px;
+      margin-bottom: 28px;
+      color: #e5e7eb;
     }
 
     .search {
-      max-width: 650px;
+      max-width: 700px;
       margin: auto;
       display: flex;
       background: white;
-      border-radius: 8px;
+      border-radius: 9px;
       overflow: hidden;
     }
 
     .search input {
       flex: 1;
       border: none;
-      padding: 15px;
       outline: none;
-      font-size: 15px;
+      padding: 16px;
+      color: #222;
+      font-size: 16px;
     }
 
     .search button {
       border: none;
       background: #f59e0b;
-      padding: 0 22px;
+      color: #111827;
+      padding: 0 24px;
       font-weight: bold;
-      cursor: pointer;
     }
 
+    /* MAIN */
+
     .container {
-      max-width: 1100px;
-      margin: 35px auto;
+      max-width: 1150px;
+      margin: 40px auto;
       padding: 0 20px;
     }
 
     .section-title {
+      font-size: 27px;
       margin-bottom: 20px;
-      font-size: 25px;
     }
+
+    .section-subtitle {
+      color: #6b7280;
+      margin-top: -12px;
+      margin-bottom: 22px;
+    }
+
+    /* CATEGORIES */
 
     .categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 12px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      margin-bottom: 50px;
     }
 
     .category {
       background: white;
-      padding: 18px 10px;
+      padding: 20px 10px;
       text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-      cursor: pointer;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.07);
+      border: 1px solid #edf0f4;
+      transition: .2s;
     }
 
     .category:hover {
-      transform: translateY(-2px);
+      transform: translateY(-4px);
+      box-shadow: 0 7px 18px rgba(0,0,0,.12);
     }
 
     .category-icon {
-      font-size: 30px;
-      margin-bottom: 8px;
+      font-size: 34px;
+      margin-bottom: 9px;
     }
+
+    .category-name {
+      font-weight: bold;
+    }
+
+    /* FILTER BAR */
+
+    .filter-bar {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 22px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 9px rgba(0,0,0,.06);
+    }
+
+    .filter-bar select {
+      padding: 11px;
+      border: 1px solid #d1d5db;
+      border-radius: 7px;
+      background: white;
+      min-width: 170px;
+    }
+
+    /* PRODUCTS */
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
 
     .product {
       background: white;
-      border-radius: 12px;
+      border-radius: 13px;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+      transition: .2s;
+    }
+
+    .product:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 18px rgba(0,0,0,.12);
     }
 
     .product-image {
-      height: 170px;
+      height: 180px;
       background: #e5e7eb;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 55px;
+      font-size: 65px;
     }
 
     .product-info {
-      padding: 15px;
+      padding: 16px;
     }
 
     .product-info h3 {
-      margin-bottom: 8px;
+      margin-bottom: 7px;
+      font-size: 18px;
+    }
+
+    .location {
+      color: #6b7280;
+      font-size: 13px;
+      margin-bottom: 10px;
     }
 
     .price {
       color: #059669;
+      font-size: 19px;
       font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 12px;
+      margin-bottom: 13px;
     }
 
-    .buy-btn {
+    .product-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .view-btn,
+    .cart-btn {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    .view-btn {
+      background: #111827;
+      color: white;
+    }
+
+    .cart-btn {
+      background: #f59e0b;
+      color: #111827;
+    }
+
+    /* SELLER SECTION */
+
+    .sell {
+      margin-top: 55px;
+      background: white;
+      padding: 35px 25px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,.07);
+    }
+
+    .sell h2 {
+      margin-bottom: 10px;
+    }
+
+    .sell p {
+      color: #6b7280;
+      margin-bottom: 15px;
+    }
+
+    .sell button {
+      background: #f59e0b;
+      border: none;
+      padding: 13px 25px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    /* WHY KHULE */
+
+    .why {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .why-card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
+      text-align: center;
+    }
+
+    .why-card .icon {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .why-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .why-card p {
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* MODAL */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.65);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 13px;
+      padding: 25px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      right: 16px;
+      top: 12px;
+      font-size: 27px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 18px;
+    }
+
+    .modal-content input,
+    .modal-content textarea,
+    .modal-content select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 7px;
+      outline: none;
+    }
+
+    .modal-content textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .modal-submit {
       width: 100%;
       border: none;
       background: #111827;
       color: white;
-      padding: 11px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .sell {
-      margin-top: 45px;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,.07);
-    }
-
-    .sell button {
-      margin-top: 15px;
-      background: #f59e0b;
-      border: none;
-      padding: 13px 25px;
-      border-radius: 6px;
+      padding: 13px;
+      border-radius: 7px;
       font-weight: bold;
-      cursor: pointer;
     }
+
+    /* FOOTER */
 
     footer {
       background: #111827;
       color: white;
       text-align: center;
-      padding: 30px 20px;
-      margin-top: 50px;
+      padding: 35px 20px;
+      margin-top: 60px;
     }
 
-    @media (max-width: 600px) {
+    footer p {
+      margin: 6px 0;
+      color: #d1d5db;
+    }
+
+    footer strong {
+      color: #f59e0b;
+      font-size: 18px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
       .header-content {
         flex-direction: column;
       }
 
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
       nav a {
-        margin: 0 6px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 50px 15px;
       }
 
       .hero h1 {
-        font-size: 30px;
+        font-size: 31px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .search {
+        flex-direction: column;
+      }
+
+      .search input {
+        padding: 14px;
+      }
+
+      .search button {
+        padding: 14px;
+      }
+
+      .container {
+        padding: 0 15px;
+      }
+
+      .product-actions {
+        flex-direction: column;
       }
     }
   </style>
@@ -223,140 +491,1057 @@
 
 <body>
 
+<!-- HEADER -->
+
 <header>
   <div class="header-content">
-    <div class="logo">KHULE <span>MARKETPLACE</span></div>
+
+    <div class="logo">
+      KHULE <span>MARKETPLACE</span>
+    </div>
 
     <nav>
       <a href="#home">Home</a>
       <a href="#categories">Categories</a>
       <a href="#products">Products</a>
       <a href="#sell">Sell</a>
+
+      <button class="cart-button" onclick="showCart()">
+        🛒 Cart (<span id="cartCount">0</span>)
+      </button>
     </nav>
+
   </div>
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero" id="home">
-  <h1>Welcome to Khule Marketplace</h1>
-  <p>Uganda's online marketplace — Buy. Sell. Connect.</p>
+
+  <h1>
+    Welcome to <span>Khule Marketplace</span>
+  </h1>
+
+  <p>
+    Uganda's online marketplace — Buy. Sell. Connect.
+  </p>
 
   <div class="search">
-    <input type="text" id="searchInput" placeholder="Search products...">
-    <button onclick="searchProducts()">Search</button>
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search products, vehicles, fashion, electronics..."
+      onkeyup="searchProducts()"
+    >
+
+    <button onclick="searchProducts()">
+      Search
+    </button>
+
   </div>
+
 </section>
+
+
+<!-- MAIN -->
 
 <div class="container">
 
-  <h2 class="section-title" id="categories">Shop by Category</h2>
+
+  <!-- CATEGORIES -->
+
+  <h2 class="section-title" id="categories">
+    Shop by Category
+  </h2>
+
+  <p class="section-subtitle">
+    Find what you need from sellers across Uganda.
+  </p>
 
   <div class="categories">
-    <div class="category">
+
+    <div class="category" onclick="filterCategory('Fashion')">
       <div class="category-icon">👕</div>
-      Fashion
+      <div class="category-name">Fashion</div>
     </div>
 
-    <div class="category">
+    <div class="category" onclick="filterCategory('Electronics')">
       <div class="category-icon">📱</div>
-      Electronics
+      <div class="category-name">Electronics</div>
     </div>
 
-    <div class="category">
+    <div class="category" onclick="filterCategory('Vehicles')">
       <div class="category-icon">🚗</div>
-      Vehicles
+      <div class="category-name">Vehicles</div>
     </div>
 
-    <div class="category">
+    <div class="category" onclick="filterCategory('Property')">
       <div class="category-icon">🏠</div>
-      Property
+      <div class="category-name">Property</div>
     </div>
 
-    <div class="category">
+    <div class="category" onclick="filterCategory('Furniture')">
       <div class="category-icon">🛋️</div>
-      Furniture
+      <div class="category-name">Furniture</div>
     </div>
 
-    <div class="category">
+    <div class="category" onclick="filterCategory('Services')">
       <div class="category-icon">💼</div>
-      Jobs & Services
+      <div class="category-name">Jobs & Services</div>
     </div>
+
   </div>
 
-  <h2 class="section-title" id="products">Featured Products</h2>
 
-  <div class="products">
+  <!-- PRODUCTS -->
 
-    <div class="product">
-      <div class="product-image">👕</div>
+  <h2 class="section-title" id="products">
+    Featured Products
+  </h2>
+
+  <p class="section-subtitle">
+    Explore products available on Khule Marketplace.
+  </p>
+
+
+  <div class="filter-bar">
+
+    <select id="categoryFilter" onchange="applyFilters()">
+
+      <option value="All">
+        All Categories
+      </option>
+
+      <option value="Fashion">
+        Fashion
+      </option>
+
+      <option value="Electronics">
+        Electronics
+      </option>
+
+      <option value="Vehicles">
+        Vehicles
+      </option>
+
+      <option value="Property">
+        Property
+      </option>
+
+      <option value="Furniture">
+        Furniture
+      </option>
+
+      <option value="Services">
+        Jobs & Services
+      </option>
+
+    </select>
+
+
+    <select id="priceFilter" onchange="applyFilters()">
+
+      <option value="All">
+        Any Price
+      </option>
+
+      <option value="100000">
+        Under UGX 100,000
+      </option>
+
+      <option value="500000">
+        Under UGX 500,000
+      </option>
+
+      <option value="1000000">
+        Under UGX 1,000,000
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div class="products" id="productList">
+
+
+    <!-- PRODUCT 1 -->
+
+    <div
+      class="product"
+      data-category="Fashion"
+      data-price="35000"
+      data-name="Men's Shirt"
+    >
+
+      <div class="product-image">
+        👕
+      </div>
+
       <div class="product-info">
+
         <h3>Men's Shirt</h3>
-        <div class="price">UGX 35,000</div>
-        <button class="buy-btn" onclick="buyProduct('Men’s Shirt')">View Product</button>
+
+        <div class="location">
+          📍 Jinja, Uganda
+        </div>
+
+        <div class="price">
+          UGX 35,000
+        </div>
+
+        <div class="product-actions">
+
+          <button
+            class="view-btn"
+            onclick="viewProduct('Men\\'s Shirt','UGX 35,000','Jinja, Uganda')"
+          >
+            View
+          </button>
+
+          <button
+            class="cart-btn"
+            onclick="addToCart('Men\\'s Shirt',35000)"
+          >
+            Add
+          </button>
+
+        </div>
+
       </div>
+
     </div>
 
-    <div class="product">
-      <div class="product-image">📱</div>
+
+    <!-- PRODUCT 2 -->
+
+    <div
+      class="product"
+      data-category="Electronics"
+      data-price="450000"
+      data-name="Smartphone"
+    >
+
+      <div class="product-image">
+        📱
+      </div>
+
       <div class="product-info">
+
         <h3>Smartphone</h3>
-        <div class="price">UGX 450,000</div>
-        <button class="buy-btn" onclick="buyProduct('Smartphone')">View Product</button>
+
+        <div class="location">
+          📍 Kampala, Uganda
+        </div>
+
+        <div class="price">
+          UGX 450,000
+        </div>
+
+        <div class="product-actions">
+
+          <button
+            class="view-btn"
+            onclick="viewProduct('Smartphone','UGX 450,000','Kampala, Uganda')"
+          >
+            View
+          </button>
+
+          <button
+            class="cart-btn"
+            onclick="addToCart('Smartphone',450000)"
+          >
+            Add
+          </button>
+
+        </div>
+
       </div>
+
     </div>
 
-    <div class="product">
-      <div class="product-image">👟</div>
+
+    <!-- PRODUCT 3 -->
+
+    <div
+      class="product"
+      data-category="Fashion"
+      data-price="80000"
+      data-name="Sports Shoes"
+    >
+
+      <div class="product-image">
+        👟
+      </div>
+
       <div class="product-info">
+
         <h3>Sports Shoes</h3>
-        <div class="price">UGX 80,000</div>
-        <button class="buy-btn" onclick="buyProduct('Sports Shoes')">View Product</button>
+
+        <div class="location">
+          📍 Mukono, Uganda
+        </div>
+
+        <div class="price">
+          UGX 80,000
+        </div>
+
+        <div class="product-actions">
+
+          <button
+            class="view-btn"
+            onclick="viewProduct('Sports Shoes','UGX 80,000','Mukono, Uganda')"
+          >
+            View
+          </button>
+
+          <button
+            class="cart-btn"
+            onclick="addToCart('Sports Shoes',80000)"
+          >
+            Add
+          </button>
+
+        </div>
+
       </div>
+
     </div>
 
-    <div class="product">
-      <div class="product-image">🪑</div>
-      <div class="product-info">
-        <h3>Modern Chair</h3>
-        <div class="price">UGX 120,000</div>
-        <button class="buy-btn" onclick="buyProduct('Modern Chair')">View Product</button>
+
+    <!-- PRODUCT 4 -->
+
+    <div
+      class="product"
+      data-category="Furniture"
+      data-price="120000"
+      data-name="Modern Chair"
+    >
+
+      <div class="product-image">
+        🪑
       </div>
+
+      <div class="product-info">
+
+        <h3>Modern Chair</h3>
+
+        <div class="location">
+          📍 Entebbe, Uganda
+        </div>
+
+        <div class="price">
+          UGX 120,000
+        </div>
+
+        <div class="product-actions">
+
+          <button
+            class="view-btn"
+            onclick="viewProduct('Modern Chair','UGX 120,000','Entebbe, Uganda')"
+          >
+            View
+          </button>
+
+          <button
+            class="cart-btn"
+            onclick="addToCart('Modern Chair',120000)"
+          >
+            Add
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PRODUCT 5 -->
+
+    <div
+      class="product"
+      data-category="Vehicles"
+      data-price="13000000"
+      data-name="Toyota Premio"
+    >
+
+      <div class="product-image">
+        🚗
+      </div>
+
+      <div class="product-info">
+
+        <h3>Toyota Premio</h3>
+
+        <div class="location">
+          📍 Jinja, Uganda
+        </div>
+
+        <div class="price">
+          UGX 13,000,000
+        </div>
+
+        <div class="product-actions">
+
+          <button
+            class="view-btn"
+            onclick="viewProduct('Toyota Premio','UGX 13,000,000','Jinja, Uganda')"
+          >
+            View
+          </button>
+
+          <button
+            class="cart-btn"
+            onclick="addToCart('Toyota Premio',13000000)"
+          >
+            Add
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PRODUCT 6 -->
+
+    <div
+      class="product"
+      data-category="Property"
+      data-price="900000"
+      data-name="Rental House"
+    >
+
+      <div class="product-image">
+        🏠
+      </div>
+
+      <div class="product-info">
+
+        <h3>Rental House</h3>
+
+        <div class="location">
+          📍 Njeru, Uganda
+        </div>
+
+        <div class="price">
+          UGX 900,000
+        </div>
+
+        <div class="product-actions">
+
+          <button
+            class="view-btn"
+            onclick="viewProduct('Rental House','UGX 900,000','Njeru, Uganda')"
+          >
+            View
+          </button>
+
+          <button
+            class="cart-btn"
+            onclick="addToCart('Rental House',900000)"
+          >
+            Add
+          </button>
+
+        </div>
+
+      </div>
+
     </div>
 
   </div>
+
+
+  <!-- SELL -->
 
   <div class="sell" id="sell">
-    <h2>Want to sell on Khule Marketplace?</h2>
-    <p>List your products and reach customers across Uganda.</p>
-    <button onclick="startSelling()">Start Selling</button>
+
+    <h2>
+      Want to sell on Khule Marketplace?
+    </h2>
+
+    <p>
+      List your products and reach customers across Uganda.
+    </p>
+
+    <button onclick="openSellerForm()">
+      Start Selling
+    </button>
+
+  </div>
+
+
+  <!-- WHY KHULE -->
+
+  <div class="why">
+
+    <div class="why-card">
+
+      <div class="icon">
+        🇺🇬
+      </div>
+
+      <h3>
+        Built for Uganda
+      </h3>
+
+      <p>
+        A marketplace designed around Ugandan buyers and sellers.
+      </p>
+
+    </div>
+
+
+    <div class="why-card">
+
+      <div class="icon">
+        🛍️
+      </div>
+
+      <h3>
+        Buy & Sell
+      </h3>
+
+      <p>
+        Discover products and give sellers a place to showcase their businesses.
+      </p>
+
+    </div>
+
+
+    <div class="why-card">
+
+      <div class="icon">
+        📱
+      </div>
+
+      <h3>
+        Mobile Friendly
+      </h3>
+
+      <p>
+        Browse Khule Marketplace comfortably from your phone.
+      </p>
+
+    </div>
+
+
+    <div class="why-card">
+
+      <div class="icon">
+        🤝
+      </div>
+
+      <h3>
+        Connect
+      </h3>
+
+      <p>
+        Connect buyers and sellers and make marketplace transactions easier.
+      </p>
+
+    </div>
+
   </div>
 
 </div>
 
+
+<!-- PRODUCT MODAL -->
+
+<div class="modal" id="productModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('productModal')">
+      ×
+    </button>
+
+    <h2 id="modalProductName">
+      Product
+    </h2>
+
+    <p id="modalProductPrice"></p>
+
+    <p id="modalProductLocation"></p>
+
+    <br>
+
+    <button
+      class="modal-submit"
+      onclick="contactSeller()"
+    >
+      Contact Seller
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- CART MODAL -->
+
+<div class="modal" id="cartModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('cartModal')">
+      ×
+    </button>
+
+    <h2>
+      🛒 Your Cart
+    </h2>
+
+    <div id="cartItems">
+      Your cart is empty.
+    </div>
+
+    <br>
+
+    <button
+      class="modal-submit"
+      onclick="checkout()"
+    >
+      Proceed to Checkout
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- SELLER MODAL -->
+
+<div class="modal" id="sellerModal">
+
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal('sellerModal')">
+      ×
+    </button>
+
+    <h2>
+      Start Selling on Khule
+    </h2>
+
+    <input
+      type="text"
+      id="sellerName"
+      placeholder="Your name"
+    >
+
+    <input
+      type="text"
+      id="sellerPhone"
+      placeholder="Phone number"
+    >
+
+    <input
+      type="text"
+      id="sellerProduct"
+      placeholder="Product name"
+    >
+
+    <select id="sellerCategory">
+
+      <option value="">
+        Select category
+      </option>
+
+      <option>
+        Fashion
+      </option>
+
+      <option>
+        Electronics
+      </option>
+
+      <option>
+        Vehicles
+      </option>
+
+      <option>
+        Property
+      </option>
+
+      <option>
+        Furniture
+      </option>
+
+      <option>
+        Jobs & Services
+      </option>
+
+    </select>
+
+    <input
+      type="number"
+      id="sellerPrice"
+      placeholder="Price in UGX"
+    >
+
+    <textarea
+      id="sellerDescription"
+      placeholder="Describe your product"
+    ></textarea>
+
+    <button
+      class="modal-submit"
+      onclick="submitSellerForm()"
+    >
+      Submit Product
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
 <footer>
-  <p><strong>KHULE MARKETPLACE</strong></p>
-  <p>Uganda Online Marketplace</p>
-  <p>© 2026 Khule Marketplace. All rights reserved.</p>
+
+  <p>
+    <strong>KHULE MARKETPLACE</strong>
+  </p>
+
+  <p>
+    Uganda Online Marketplace
+  </p>
+
+  <p>
+    Buy. Sell. Connect.
+  </p>
+
+  <p>
+    © 2026 Khule Marketplace. All rights reserved.
+  </p>
+
 </footer>
 
-<script>
-  function searchProducts() {
-    const search = document.getElementById("searchInput").value.trim();
 
-    if (search === "") {
-      alert("Please enter a product to search.");
+<script>
+
+  /* CART */
+
+  let cart = [];
+
+  function addToCart(product, price) {
+
+    cart.push({
+      product: product,
+      price: price
+    });
+
+    document.getElementById("cartCount").textContent = cart.length;
+
+    alert(product + " has been added to your cart.");
+  }
+
+
+  function showCart() {
+
+    const cartItems =
+      document.getElementById("cartItems");
+
+    if (cart.length === 0) {
+
+      cartItems.innerHTML =
+        "Your cart is empty.";
+
+    } else {
+
+      let html = "";
+      let total = 0;
+
+      cart.forEach(function(item, index) {
+
+        total += item.price;
+
+        html += `
+          <p style="margin-bottom:10px;">
+            <strong>${item.product}</strong><br>
+            UGX ${item.price.toLocaleString()}
+            <button
+              onclick="removeFromCart(${index})"
+              style="
+                float:right;
+                border:none;
+                background:#dc2626;
+                color:white;
+                padding:4px 7px;
+                border-radius:4px;
+              "
+            >
+              Remove
+            </button>
+          </p>
+        `;
+
+      });
+
+      html += `
+        <hr style="margin:15px 0;">
+        <strong>
+          Total: UGX ${total.toLocaleString()}
+        </strong>
+      `;
+
+      cartItems.innerHTML = html;
+    }
+
+    document.getElementById("cartModal").style.display = "flex";
+  }
+
+
+  function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    document.getElementById("cartCount").textContent =
+      cart.length;
+
+    showCart();
+  }
+
+
+  /* PRODUCT VIEW */
+
+  function viewProduct(name, price, location) {
+
+    document.getElementById("modalProductName").textContent =
+      name;
+
+    document.getElementById("modalProductPrice").textContent =
+      "Price: " + price;
+
+    document.getElementById("modalProductLocation").textContent =
+      "Location: " + location;
+
+    document.getElementById("productModal").style.display =
+      "flex";
+  }
+
+
+  function contactSeller() {
+
+    alert(
+      "Seller contact will be connected to WhatsApp and seller accounts in the next stage."
+    );
+  }
+
+
+  /* SEARCH */
+
+  function searchProducts() {
+
+    const search =
+      document.getElementById("searchInput").value
+      .toLowerCase()
+      .trim();
+
+    const products =
+      document.querySelectorAll(".product");
+
+    products.forEach(function(product) {
+
+      const name =
+        product.dataset.name.toLowerCase();
+
+      const category =
+        product.dataset.category.toLowerCase();
+
+      if (
+        search === "" ||
+        name.includes(search) ||
+        category.includes(search)
+      ) {
+
+        product.style.display = "";
+
+      } else {
+
+        product.style.display = "none";
+
+      }
+
+    });
+
+  }
+
+
+  /* CATEGORY */
+
+  function filterCategory(category) {
+
+    document.getElementById("categoryFilter").value =
+      category;
+
+    applyFilters();
+
+    document.getElementById("products")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+  }
+
+
+  /* FILTERS */
+
+  function applyFilters() {
+
+    const category =
+      document.getElementById("categoryFilter").value;
+
+    const price =
+      document.getElementById("priceFilter").value;
+
+    const search =
+      document.getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
+
+    const products =
+      document.querySelectorAll(".product");
+
+    products.forEach(function(product) {
+
+      const productCategory =
+        product.dataset.category;
+
+      const productPrice =
+        Number(product.dataset.price);
+
+      const productName =
+        product.dataset.name.toLowerCase();
+
+      const categoryMatch =
+        category === "All" ||
+        productCategory === category;
+
+      const priceMatch =
+        price === "All" ||
+        productPrice <= Number(price);
+
+      const searchMatch =
+        search === "" ||
+        productName.includes(search) ||
+        productCategory.toLowerCase().includes(search);
+
+      if (
+        categoryMatch &&
+        priceMatch &&
+        searchMatch
+      ) {
+
+        product.style.display = "";
+
+      } else {
+
+        product.style.display = "none";
+
+      }
+
+    });
+
+  }
+
+
+  /* SELLER */
+
+  function openSellerForm() {
+
+    document.getElementById("sellerModal")
+      .style.display = "flex";
+  }
+
+
+  function submitSellerForm() {
+
+    const name =
+      document.getElementById("sellerName").value.trim();
+
+    const phone =
+      document.getElementById("sellerPhone").value.trim();
+
+    const product =
+      document.getElementById("sellerProduct").value.trim();
+
+    if (
+      name === "" ||
+      phone === "" ||
+      product === ""
+    ) {
+
+      alert(
+        "Please enter your name, phone number and product name."
+      );
+
       return;
     }
 
-    alert("Searching Khule Marketplace for: " + search);
+    alert(
+      "Thank you, " +
+      name +
+      ". Your product information has been received. Seller accounts and product publishing will be connected in the next stage."
+    );
+
+    closeModal("sellerModal");
   }
 
-  function buyProduct(product) {
-    alert(product + " selected. Product details and checkout will be connected in the next version.");
+
+  /* CHECKOUT */
+
+  function checkout() {
+
+    if (cart.length === 0) {
+
+      alert(
+        "Your cart is empty."
+      );
+
+      return;
+    }
+
+    alert(
+      "Checkout and Uganda payment options will be connected in the next stage."
+    );
   }
 
-  function startSelling() {
-    alert("Seller registration will be connected in the next version.");
+
+  /* MODAL */
+
+  function closeModal(id) {
+
+    document.getElementById(id)
+      .style.display = "none";
   }
+
+
+  window.onclick = function(event) {
+
+    const modals =
+      document.querySelectorAll(".modal");
+
+    modals.forEach(function(modal) {
+
+      if (event.target === modal) {
+
+        modal.style.display = "none";
+
+      }
+
+    });
+
+  };
+
 </script>
 
 </body>
